@@ -6,7 +6,7 @@ const initGL = () => {
     console.log(canvas)
     gl = canvas.getContext("webgl")
     gl.viewport(0, 0, canvas.width, canvas.height)
-    gl.clearColor(1, 1, 1, 1)
+    gl.clearColor(0, 0, 0, 1)
 }
 
 const draw = () => {
@@ -50,13 +50,15 @@ const createShaders = () => {
 
 const createVertices = () => {
     var coords = gl.getAttribLocation(shaderProgram, "coords")
-    gl.vertexAttrib3f(coords, 0.0, 0.0, 0.0)
+    // (x, y, alpha)
+    gl.vertexAttrib3f(coords, 0.5, 0.0, 0.0)
 
     var pointSize = gl.getAttribLocation(shaderProgram, "pointSize")
     gl.vertexAttrib1f(pointSize, 50.0)
 
     var color = gl.getUniformLocation(shaderProgram, "color")
-    gl.uniform4f(color, 0.0, 0.0, 0.0, 1.0)
+    // (r, g, b, alpha)
+    gl.uniform4f(color, 0.0, 0.0, 0.0, 0.0)
 }
 
 initGL()
